@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1790369546|6029644';
+const CACHE_VERSION = '1790373871|5567670';
 /** @type {string} */
 const CACHE_PREFIX = 'Circuit-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
