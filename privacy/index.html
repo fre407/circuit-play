@@ -53,12 +53,12 @@
 <h3>1. Cihazında kalan bilgiler</h3>
 <p>İlerlemen (Yolculuk yıldızları, skorlar, istatistikler, Günlük Devre serisi, görünüm seçimleri ve ayarlar) yalnızca cihazındaki oyun dosyasında saklanır. Bu bilgiler bize gönderilmez. Oyunu silersen bu bilgiler de silinir.</p>
 
-<h3>2. Anonim kullanım istatistikleri (Google Analytics)</h3>
-<p>Oyunu geliştirmek için (örneğin hangi bölümlerin çok zor olduğunu görmek) Google Analytics'e anonim oyun olayları gönderilir:</p>
+<h3>2. Anonim kullanım istatistikleri (Google Analytics for Firebase)</h3>
+<p>Oyunu geliştirmek için (örneğin hangi bölümlerin çok zor olduğunu görmek) Google Analytics for Firebase'e (Google) anonim kullanım bilgileri gönderilir:</p>
 <ul>
   <li>Oyun olayları: oyun başladı/bitti, seçilen zorluk, skor, oyun süresi, Yolculuk bölümü ve kazanılan yıldız, Günlük Devre sonucu, ödüllü reklam özelliklerinin kullanımı.</li>
-  <li>Teknik bilgiler: platform (Android / iOS / web), oyun sürümü, dil.</li>
-  <li>Oyun ilk açıldığında oluşturulan <strong>rastgele bir kurulum numarası</strong>. Bu numara seni ya da cihazını tanımlamaz, reklam kimliğine bağlı değildir; oyunu yeniden kurduğunda değişir.</li>
+  <li>Teknik bilgiler: platform (Android / iOS / web), cihaz modeli, işletim sistemi sürümü, oyun sürümü, dil, ülke/bölge (IP adresinden kabaca tahmin edilir), oturum süresi ve oyunun ilk açılışı gibi otomatik ölçümler.</li>
+  <li>Oyun ilk açıldığında oluşturulan <strong>rastgele bir uygulama kurulum numarası</strong>. Bu numara adını ya da iletişim bilgilerini içermez; analiz için <strong>reklam kimliği toplanmaz</strong>. Oyunu yeniden kurduğunda numara değişir.</li>
 </ul>
 <p>Bu bilgiler kişisel bilgilerle birleştirilmez ve reklam amacıyla kullanılmaz. İnternet bağlantısının doğası gereği IP adresin Google'a ulaşır; Google Analytics IP adreslerini kaydetmez. İstediğin zaman <strong>Ayarlar → "Anonim kullanım istatistiklerini paylaş"</strong> anahtarını kapatarak bu gönderimi durdurabilirsin.</p>
 
@@ -95,12 +95,12 @@
 <h3>1. Information that stays on your device</h3>
 <p>Your progress (Journey stars, scores, stats, Daily Circuit streak, appearance choices and settings) is stored only in the game's file on your device. It is not sent to us, and it is removed when you delete the game.</p>
 
-<h3>2. Anonymous usage statistics (Google Analytics)</h3>
-<p>To improve the game (for example, to see which levels are too hard) anonymous gameplay events are sent to Google Analytics:</p>
+<h3>2. Anonymous usage statistics (Google Analytics for Firebase)</h3>
+<p>To improve the game (for example, to see which levels are too hard) anonymous usage information is sent to Google Analytics for Firebase (Google):</p>
 <ul>
   <li>Gameplay events: game started/finished, chosen difficulty, score, play time, Journey level and stars earned, Daily Circuit result, use of rewarded-ad features.</li>
-  <li>Technical details: platform (Android / iOS / web), game version, language.</li>
-  <li>A <strong>random install number</strong> created when the game first starts. It does not identify you or your device, is not linked to any advertising ID, and changes if you reinstall the game.</li>
+  <li>Technical details: platform (Android / iOS / web), device model, operating system version, game version, language, country/region (roughly derived from the IP address), and automatic measurements such as session length and first app open.</li>
+  <li>A <strong>random app-install number</strong> created when the game first starts. It does not contain your name or contact details, and <strong>no advertising ID is collected</strong> for analytics. It changes if you reinstall the game.</li>
 </ul>
 <p>This information is not combined with personal information and is not used for advertising. As with any internet connection, your IP address reaches Google; Google Analytics does not log or store IP addresses. You can stop this at any time with <strong>Settings → "Share anonymous usage stats"</strong>.</p>
 
