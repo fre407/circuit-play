@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Circuit: Loop Puzzle – duel invite</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         background: radial-gradient(circle at 50% 30%, #0f2a3a 0%, #050a14 70%); color: #eaf6ff;
+         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 24px; }
+  main { max-width: 420px; width: 100%; }
+  h1 { font-size: 30px; letter-spacing: 3px; margin: 0 0 4px; text-shadow: 0 0 18px #2de2ff88; }
+  p { color: #9fb4c8; line-height: 1.45; margin: 8px 0; }
+  .code { font-size: 54px; font-weight: 800; letter-spacing: 8px; margin: 18px 0 6px; color: #fff;
+          text-shadow: 0 0 22px #2de2ffaa; }
+  a.btn, button.btn { display: block; width: 100%; padding: 16px; margin: 12px 0; border-radius: 999px; border: 2px solid #2de2ff;
+          background: #2de2ff; color: #021018; font-weight: 800; font-size: 18px; text-decoration: none; cursor: pointer; }
+  a.alt, button.alt { background: transparent; color: #eaf6ff; border-color: #ffffff33; }
+  small { color: #6f8499; display: block; margin-top: 18px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>CIRCUIT</h1>
+  <p id="invited">A friend challenged you to a duel!</p>
+  <div class="code" id="code">······</div>
+  <p id="how">Install Circuit: Loop Puzzle, open it and join the duel with this code.</p>
+  <a class="btn" id="play" href="#">Get it on Google Play</a>
+  <a class="btn" id="apple" href="#" hidden>Download on the App Store</a>
+  <a class="btn alt" id="android2" href="#" hidden>Google Play</a>
+  <button class="btn alt" id="copy" type="button">Copy the code</button>
+  <small id="note"></small>
+</main>
+<script>
+(function () {
+  var ANDROID = "https://play.google.com/store/apps/details?id=com.fre4.circuit";
+  var IOS = "https://apps.apple.com/app/id6816641587";
+  var T = {
+    en: { invited: "A friend challenged you to a duel!", how: "Install Circuit: Loop Puzzle, open it and join the duel with this code.",
+          play: "Get it on Google Play", apple: "Download on the App Store", copy: "Copy the code", copied: "Code copied ✓",
+          note: "Already have the game? Open Circuit → DUEL → JOIN WITH A CODE.", nocode: "No code" },
+    tr: { invited: "Bir arkadaşın seni düelloya çağırdı!", how: "Circuit: Loop Puzzle'ı kur, aç ve bu kodla düelloya katıl.",
+          play: "Google Play'den indir", apple: "App Store'dan indir", copy: "Kodu kopyala", copied: "Kod kopyalandı ✓",
+          note: "Oyun yüklüyse: Circuit → DÜELLO → KODLA KATIL.", nocode: "Kod yok" }
+  };
+  var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  var t = T[lang];
+  document.documentElement.lang = lang;
+  var m = /[?&]c=([A-Za-z0-9]{6})(?![A-Za-z0-9])/.exec(location.search);
+  var code = m ? m[1].toUpperCase() : "";
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+  function $(id) { return document.getElementById(id); }
+  $("invited").textContent = t.invited; $("how").textContent = t.how; $("note").textContent = t.note;
+  $("play").textContent = t.play; $("apple").textContent = t.apple; $("android2").textContent = t.play; $("copy").textContent = t.copy;
+  $("code").textContent = code || t.nocode;
+  if (!code) { $("copy").hidden = true; }
+  var androidUrl = ANDROID + (code ? "&referrer=" + encodeURIComponent("duel=" + code) : "");
+  $("play").href = androidUrl; $("android2").href = androidUrl; $("apple").href = IOS;
+  if (isIOS) { $("play").hidden = true; $("apple").hidden = false; }
+  else if (!isAndroid) { $("apple").hidden = false; $("play").hidden = true; $("android2").hidden = false; $("android2").classList.remove("alt"); $("apple").classList.add("alt"); $("android2").classList.add("btn"); }
+  $("copy").addEventListener("click", function () {
+    var done = function () { $("copy").textContent = t.copied; };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(code).then(done, done); }
+    else { var i = document.createElement("input"); i.value = code; document.body.appendChild(i); i.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(i); done(); }
+  });
+  // on a phone the visitor is sent to the right store (a phone that has the game never gets here:
+  // the link opens the game directly)
+  if (code && (isAndroid || isIOS)) {
+    setTimeout(function () { location.href = isIOS ? IOS : androidUrl; }, 2500);
+  }
+})();
+</script>
+</body>
+</html>
